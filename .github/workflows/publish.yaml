@@ -13,5 +13,5 @@ jobs:
           password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Build the PS Universal Docker image with persistent storage
         run: |
-              docker build ./apps/psuniversal/dockerfile --tag ghcr.io/penmoid/psuniversal-persistent-storage:latest
+              docker build ./apps/psuniversal --tag ghcr.io/penmoid/psuniversal-persistent-storage:latest
               docker push ghcr.io/penmoid/psuniversal-persistent-storage:latest
