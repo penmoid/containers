@@ -7,4 +7,5 @@ ENV Data__RepositoryPath /home/data/Repository
 ENV Data__ConnectionString /home/data/database.db
 ENV UniversalDashboard__AssetsFolder /home/data/UniversalDashboard 
 ENV Logging__Path /home/data/logs/log.txt
+RUN apt-get install -y tzdata
 ENTRYPOINT ["./Universal/Universal.Server"]
