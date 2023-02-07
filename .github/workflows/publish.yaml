@@ -1,0 +1,23 @@
+name: publish
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/**"
+jobs:
+  publish-psuniversal-persistent-storage-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Build the PS Universal Docker image with persistent storage
+        run: |
+              docker build . --tag ghcr.io/penmoid/psuniversal-persistent-storage:latest
+              docker run ghcr.io/penmoid/psuniversal-persistent-storage:latest
+              docker push ghcr.io/penmoid/psuniversal-persistent-storage:latest
