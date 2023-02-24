@@ -17,3 +17,19 @@ jobs:
               --tag ghcr.io/penmoid/psuniversal-persistent-storage:3.7.10 \
               --tag ghcr.io/penmoid/psuniversal-persistent-storage:latest
               docker push --all-tags ghcr.io/penmoid/psuniversal-persistent-storage
+  publish-elasticsearch-6x-nextcloud-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Build the Elasticsearch Docker image with ingest-attachment plugin
+        run: |
+              docker build ./apps/elasticsearch-6x-nextcloud \
+              --tag ghcr.io/penmoid/elasticsearch-6x-nextcloud:6.8.23 \
+              --tag ghcr.io/penmoid/elasticsearch-6x-nextcloud:latest
+              docker push --all-tags ghcr.io/penmoid/elasticsearch-6x-nextcloud
