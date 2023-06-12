@@ -1,4 +1,4 @@
-FROM ironmansoftware/universal:3.8.11-ubuntu-20.04
+FROM ironmansoftware/universal:3.9.6-ubuntu-20.04
 LABEL description="PS Universal Configured for Persistent Storage" 
 
 EXPOSE 5000
