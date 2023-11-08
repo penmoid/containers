@@ -14,7 +14,7 @@ jobs:
       - name: Build the PS Universal Docker image with persistent storage
         run: |
               docker build ./apps/psuniversal \
-              --tag ghcr.io/penmoid/psuniversal-persistent-storage:4.0.1 \
+              --tag ghcr.io/penmoid/psuniversal-persistent-storage:4.1.8 \
               --tag ghcr.io/penmoid/psuniversal-persistent-storage:latest
               docker push --all-tags ghcr.io/penmoid/psuniversal-persistent-storage
   #publish-elasticsearch-6x-nextcloud-docker-image:
